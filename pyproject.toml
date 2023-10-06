@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "promptimizer"
+version = "0.1.0"
+description = "An elegant LLM prompt optimizer and prompt builder."
+authors = ["Zeeland <zeeland@foxmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Undertone0809/promptimizer"
+
+[tool.poetry.dependencies]
+python = ">=3.8"
+promptulate = "^1.7.2"
+questionary = "^2.0.1"
+click = "^8.1.7"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+promptimizer = "promptimizer.client:startup"
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+priority = "default"
