@@ -22,6 +22,14 @@ def get_user_input() -> Optional[str]:
 def startup():
     print_text("Welcome to Prompt Optimizer", "pink")
 
+    selected_model = questionary.select(
+        "What LLM you want to use?",
+        choices=["gpt-3.5-turbo", "gpt-3.5-turbo-16k", "gpt-4", "gpt-4-32k", "Exit"],
+    ).ask()
+
+    if selected_model == "Exit":
+        exit()
+
     while True:
         choose = questionary.select(
             "What do you want to do?",
@@ -32,12 +40,12 @@ def startup():
             print_text("Please input your original prompt:", "pink")
             user_input = get_user_input()
             print_text(f"[User] {user_input}")
-            res = prompt_builder.build_prompt(user_input)
+            res = prompt_builder.build_prompt(user_input, selected_model)
         elif choose == "Prompt Builder":
             print_text("Please input your demand:", "pink")
             user_input = get_user_input()
             print_text(f"[User] {user_input}")
-            res = prompt_optimizer.optimize_prompt(user_input)
+            res = prompt_optimizer.optimize_prompt(user_input, selected_model)
         else:
             exit()
 
